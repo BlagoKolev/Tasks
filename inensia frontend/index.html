@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Inensia JS Task</h3>
+    <button id="btn" type="button" onclick="TableToCsv()">Export to CSV</button>
+    <div id="container"></div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        function TableToCsv() {
+            let csvData = [];
+            var rows = document.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+
+                let cols = rows[i].querySelectorAll('th,td');
+                let csvRow = [];
+
+                for (let j = 0; j < cols.length; j++) {
+                    csvRow.push(cols[j].innerHTML);
+                }
+                csvData.push(csvRow.join(','));
+            }
+            csvData = csvData.join('\n');
+
+            DownloadCsvFile(csvData);
+        }
+
+        function DownloadCsvFile(csvData){
+
+            let csvFile = new Blob([csvData],{type:"text/csv"});
+            var temporaryLink = document.createElement('a');
+            
+            temporaryLink.download = 'table.csv';
+            let url = window.URL.createObjectURL(csvFile);
+            temporaryLink.href = url;
+
+            temporaryLink.style.display = 'none';
+            document.body.appendChild(temporaryLink);
+
+            temporaryLink.click();
+            document.body.removeChild(temporaryLink);
+        }
+    </script>
+</body>
+
+</html>

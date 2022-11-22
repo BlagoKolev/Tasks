@@ -1,0 +1,28 @@
+#head-row {
+    background-color: #FFD3D3;
+    display: flex;
+    font-size: 10px;
+}
+
+#body-row {
+    display: flex;
+    font-size: 10px;
+}
+
+.cell {
+    border: 1px solid white;
+}
+
+th, td {
+    width: 8%;
+    text-overflow: ellipsis;
+    word-break:break-all;
+    text-align: center;
+}
+
+#btn {
+background-color: #EFEFEF;
+border: 1px solid black;
+border-radius: 3px;
+margin-bottom: 5px;
+}
