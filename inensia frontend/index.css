@@ -1,5 +1,4 @@
 #head-row {
-    background-color: #FFD3D3;
     display: flex;
     font-size: 10px;
 }
@@ -11,18 +10,31 @@
 
 .cell {
     border: 1px solid white;
+    text-align: center;
 }
 
-th, td {
+.cell:hover {
+    scale: 1.5;
+}
+
+th,
+td {
     width: 8%;
     text-overflow: ellipsis;
-    word-break:break-all;
+    word-break: break-all;
     text-align: center;
 }
 
 #btn {
-background-color: #EFEFEF;
-border: 1px solid black;
-border-radius: 3px;
-margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+#btn:hover {
+    background-color: #01C851;
+    color: white;
+}
+
+h3 {
+    margin-left: 5px;
 }
